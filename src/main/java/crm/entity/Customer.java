@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "customers")
+@Entity(name = "customer")
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,6 +21,11 @@ public class Customer {
 
     @Column(nullable = false, unique = true)
     private String name;
+
+//    @Column(name = "email", nullable = false, unique = true)
+//    @Email(message = "Please provide a valid e-mail")
+//    @NotEmpty(message = "Please provide an e-mail")
+//    private String email;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "customer_category",
@@ -36,6 +41,6 @@ public class Customer {
 
     private String address;
 
-    private boolean enabled;
+    private int enabled;
 
 }

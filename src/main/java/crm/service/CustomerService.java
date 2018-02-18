@@ -1,9 +1,6 @@
 package crm.service;
 
-import crm.entity.Category;
 import crm.entity.Customer;
-
-import java.util.Set;
 
 /**
  * NOTICE
@@ -16,45 +13,49 @@ import java.util.Set;
 
 public interface CustomerService {
 
-    Iterable<Customer> findByEnabledTrue();
+    Iterable<Customer> listAllCustomers();
 
-    Iterable<Customer> findByEnabledFalse();
+    Customer showCustomer(Long id);
 
-    Customer findByEnabledTrueAndName(String name);
-    Customer findByEnabledFalseAndName(String name);
-    Customer findByName(String name);
-
-    Iterable<Customer> findByEnabledTrueAndCategories(Set<Category> category);
-    Iterable<Customer> findByEnabledFalseAndCategories(Set<Category> category);
-    Iterable<Customer> findByCategories(Set<Category> category);
-
-    Iterable<Customer> findByEnabledTrueAndCategoryName(String categoryName);
-    Iterable<Customer> findByEnabledFalseAndCategoryName(String categoryName);
-    Iterable<Customer> findByCategoryName(String categoryName);
-
-    Iterable<Customer> findByEnabledTrueAndFirstName(String firstName);
-    Iterable<Customer> findByEnabledFalseAndFirstName(String firstName);
-    Iterable<Customer> findByFirstName(String firstName);
-
-    Iterable<Customer> findByEnabledTrueAndLastName(String lastName);
-    Iterable<Customer> findByEnabledFalseAndLastName(String lastName);
-    Iterable<Customer> findByLastName(String lastName);
-
-    Iterable<Customer> findByEnabledTrueAndFirstNameAndLastName(String firstName, String lastName);
-    Iterable<Customer> findByEnabledFalseAndFirstNameAndLastName(String firstName, String lastName);
-    Iterable<Customer> findByFirstNameAndLastName(String firstName, String lastName);
-
-    Iterable<Customer> findByEnabledTrueAndCity(String city);
-    Iterable<Customer> findByEnabledFalseAndCity(String city);
-    Iterable<Customer> findByCity(String city);
-
-    Iterable<Customer> findByEnabledTrueAndCityAndAddress(String city, String address);
-    Iterable<Customer> findByEnabledFalseAndCityAndAddress(String city, String address);
-    Iterable<Customer> findByCityAndAddress(String city, String address);
-
+    //    Iterable<Customer> findByEnabledTrue();
+//
+//    Iterable<Customer> findByEnabledFalse();
+//
+//    Customer findByEnabledTrueAndName(String name);
+//    Customer findByEnabledFalseAndName(String name);
+//    Customer findByName(String name);
+//
+//    Iterable<Customer> findByEnabledTrueAndCategories(Set<Category> category);
+//    Iterable<Customer> findByEnabledFalseAndCategories(Set<Category> category);
+//    Iterable<Customer> findByCategories(Set<Category> category);
+//
+//    Iterable<Customer> findByEnabledTrueAndCategoryName(String categoryName);
+//    Iterable<Customer> findByEnabledFalseAndCategoryName(String categoryName);
+//    Iterable<Customer> findByCategoryName(String categoryName);
+//
+//    Iterable<Customer> findByEnabledTrueAndFirstName(String firstName);
+//    Iterable<Customer> findByEnabledFalseAndFirstName(String firstName);
+//    Iterable<Customer> findByFirstName(String firstName);
+//
+//    Iterable<Customer> findByEnabledTrueAndLastName(String lastName);
+//    Iterable<Customer> findByEnabledFalseAndLastName(String lastName);
+//    Iterable<Customer> findByLastName(String lastName);
+//
+//    Iterable<Customer> findByEnabledTrueAndFirstNameAndLastName(String firstName, String lastName);
+//    Iterable<Customer> findByEnabledFalseAndFirstNameAndLastName(String firstName, String lastName);
+//    Iterable<Customer> findByFirstNameAndLastName(String firstName, String lastName);
+//
+//    Iterable<Customer> findByEnabledTrueAndCity(String city);
+//    Iterable<Customer> findByEnabledFalseAndCity(String city);
+//    Iterable<Customer> findByCity(String city);
+//
+//    Iterable<Customer> findByEnabledTrueAndCityAndAddress(String city, String address);
+//    Iterable<Customer> findByEnabledFalseAndCityAndAddress(String city, String address);
+//    Iterable<Customer> findByCityAndAddress(String city, String address);
+//
     void saveCustomer(Customer customer);
-
+//
     void editCustomer(Customer customer);
-
-    void deleteCustomer(Customer customer);
+//
+//    void deleteCustomer(Customer customer);
 }
