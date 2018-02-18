@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Edit customer</title>
+    <title>Add new customer based on another one</title>
 </head>
 <body>
 
-<h2>Edit customer form</h2>
-<form th:action="@{|/customer/edit/${customer.id}|}" th:object="${customer}" method="post">
+<h2>Add new customer based on another one form</h2>
+<form th:action="@{|/customer/addCustomerBasedOnAnotherOne/${customer.id}|}" th:object="${customer}" method="post">
     <div>
         <label>
             Name:
@@ -39,7 +39,7 @@
         </label>
     </div>
     <div>
-        <input type="submit" value="Edit Customer"/>
+        <input type="submit" value="Add New Customer"/>
     </div>
 </form>
 

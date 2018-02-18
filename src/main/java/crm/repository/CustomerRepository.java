@@ -2,6 +2,7 @@ package crm.repository;
 
 import crm.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,6 +16,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+
+    @Query(value = "select count(*) from crm.customer", nativeQuery = true)
+    Long countCustomers();
 
 //    Iterable<Customer> findByEnabledTrue();
 //

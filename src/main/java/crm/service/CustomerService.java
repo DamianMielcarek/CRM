@@ -13,6 +13,9 @@ import crm.entity.Customer;
 
 public interface CustomerService {
 
+
+    Long countCustomers();
+
     Iterable<Customer> listAllCustomers();
 
     Customer showCustomer(Long id);
@@ -55,7 +58,7 @@ public interface CustomerService {
 //
     void saveCustomer(Customer customer);
 //
-    void editCustomer(Customer customer);
+//    void editCustomer(Customer customer);
 //
 //    void deleteCustomer(Customer customer);
 }

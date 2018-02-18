@@ -16,6 +16,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Long countCustomers() {
+        return customerRepository.countCustomers();
+    }
+
+    @Override
     public Iterable<Customer> listAllCustomers() {
         return customerRepository.findAll();
     }
@@ -161,10 +166,10 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.save(customer);
     }
 //
-    @Override
-    public void editCustomer(Customer customer) {
-        customerRepository.save(customer);
-    }
+//    @Override
+//    public void editCustomer(Customer customer) {
+//        customerRepository.save(customer);
+//    }
 //
 //    @Override
 //    public void deleteCustomer(Customer customer) {

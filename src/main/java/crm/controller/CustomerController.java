@@ -46,7 +46,7 @@ public class CustomerController {
      * @return customer/add
      */
     @GetMapping("/add")
-    public String showAddCustomerForm(Model model) {
+    public String showFormAddCustomer(Model model) {
         model.addAttribute("customer", new Customer());
         return "customer/add";
     }
@@ -61,7 +61,7 @@ public class CustomerController {
      * @return customer/success
      */
     @PostMapping("/add")
-    public String processAddCustomerRequest(@Valid Customer customer, BindingResult bindingResult) {
+    public String processRequestAddCustomer(@Valid Customer customer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "redirect:/customer/add";
         } else {
@@ -80,7 +80,7 @@ public class CustomerController {
      * @return customer/edit
      */
     @GetMapping("/edit/{id}")
-    public String showEditCustomerForm(Model model, @PathVariable Long id) {
+    public String showFormEditCustomer(Model model, @PathVariable Long id) {
         model.addAttribute("customer", customerService.showCustomer(id));
         return "customer/edit";
     }
@@ -96,11 +96,57 @@ public class CustomerController {
      * @return redirect:/customer/list
      */
     @PostMapping("/edit/{id}")
-    public String processEditCustomerRequest(@PathVariable Long id, @Valid Customer customer, BindingResult bindingResult) {
+    public String processRequestEditCustomer(@PathVariable Long id, @Valid Customer customer,
+                                             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/customer/edit/{id}";
+            return "redirect:/customer/edit/" + id;
         } else {
             customerService.saveCustomer(customer);
+            return "redirect:/customer/list";
+        }
+    }
+
+    /**
+     * /customer/addCustomerBasedOnAnotherOne/{id}
+     * <p>
+     * Shows create-customer-based-on-another-one form
+     *
+     * @param model model to attributes to
+     * @param id    variable type long reference customer id
+     * @return customer/add-customer-based-on-another-one
+     */
+    @GetMapping("/addCustomerBasedOnAnotherOne/{id}")
+    public String showFormCreateCustomerBasedOnAnotherOne(Model model, @PathVariable Long id) {
+        model.addAttribute("customer", customerService.showCustomer(id));
+        return "customer/add-customer-based-on-another-one";
+    }
+
+    /**
+     * /customer/addCustomerBasedOnAnotherOne/{id}
+     * <p>
+     * Creates customer based on another one
+     *
+     * @param id            variable type long reference customer id
+     * @param customer      variable type Customer
+     * @param bindingResult variable type BindingResult
+     * @return redirect:/customer/list
+     */
+    @PostMapping("/addCustomerBasedOnAnotherOne/{id}")
+    public String createCustomerBasedOnAnotherOne(@PathVariable Long id, @Valid Customer customer,
+                                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "redirect:/customer/addCustomerBasedOnAnotherOne/" + id;
+        } else {
+            Customer newCustomer = new Customer(
+                    customerService.countCustomers() + 1L,
+                    customer.getName(),
+                    customer.getCategories(),
+                    customer.getFirstName(),
+                    customer.getLastName(),
+                    customer.getCity(),
+                    customer.getAddress(),
+                    customer.getEnabled());
+            customerService.saveCustomer(newCustomer);
             return "redirect:/customer/list";
         }
     }

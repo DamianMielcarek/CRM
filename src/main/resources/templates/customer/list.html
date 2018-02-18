@@ -12,6 +12,7 @@
         <th><a th:text="#{customer.name}"></a></th>
         <th><a th:text="#{customer.id}"></a></th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <td th:text="${customer.name}"></td>
         <td th:text="${customer.id}"></td>
         <td><a th:href="@{|/customer/edit/${customer.id}|}">Edit</a></td>
+        <td><a th:href="@{|/customer/addCustomerBasedOnAnotherOne/${customer.id}|}">Add new customer based on this</a></td>
     </tr>
     </tbody>
 </table>
