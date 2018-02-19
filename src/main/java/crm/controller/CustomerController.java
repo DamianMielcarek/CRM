@@ -138,7 +138,7 @@ public class CustomerController {
             return "redirect:/customer/addCustomerBasedOnAnotherOne/" + id;
         } else {
             Customer newCustomer = new Customer(
-                    customerService.countCustomers() + 1L,
+                    customerService.getMaxId() + 1L,
                     customer.getName(),
                     customer.getEmail(),
                     customer.getPhone(),

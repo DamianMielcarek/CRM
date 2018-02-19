@@ -14,7 +14,7 @@ import crm.entity.Customer;
 public interface CustomerService {
 
 
-    Long countCustomers();
+    Long getMaxId();
 
     Iterable<Customer> listAllCustomers();
 

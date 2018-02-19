@@ -16,8 +16,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Long countCustomers() {
-        return customerRepository.countCustomers();
+    public Long getMaxId() {
+        return customerRepository.getMaxId();
     }
 
     @Override

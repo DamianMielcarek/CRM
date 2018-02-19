@@ -17,8 +17,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    @Query(value = "select count(*) from crm.customer", nativeQuery = true)
-    Long countCustomers();
+    @Query(value = "select max(id) from crm.customer", nativeQuery = true)
+    Long getMaxId();
 
 //    Iterable<Customer> findByEnabledTrue();
 //
