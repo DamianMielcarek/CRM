@@ -5,7 +5,7 @@ import crm.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("customerService")
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;

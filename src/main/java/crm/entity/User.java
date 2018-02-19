@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "user")
+@Entity(name = "users")
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,6 +23,11 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(name = "email", nullable = false, unique = true)
+    @Email(message = "Please provide a valid e-mail")
+    @NotEmpty(message = "Please provide an e-mail")
+    private String email;
 
     private String firstName;
 

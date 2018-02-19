@@ -8,10 +8,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class SpringDataUserDetailsService implements UserDetailsService {
 
     private UserService userService;
@@ -23,7 +25,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.findByUserName(username);
+        User user = userService.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
@@ -31,8 +33,10 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         for (Role role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return new crm.service.CurrentUser(user.getUsername(), user.getPassword(),
-                grantedAuthorities, user.getId());
+        return new org.springframework.security.core.userdetails.User(
+                user.getUsername(), user.getPassword(), grantedAuthorities);
+//        return new crm.service.CurrentUser(user.getUsername(), user.getPassword(),
+//                grantedAuthorities, user.getId());
     }
 
 }
