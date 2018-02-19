@@ -140,6 +140,8 @@ public class CustomerController {
             Customer newCustomer = new Customer(
                     customerService.countCustomers() + 1L,
                     customer.getName(),
+                    customer.getEmail(),
+                    customer.getPhone(),
                     customer.getCategories(),
                     customer.getFirstName(),
                     customer.getLastName(),

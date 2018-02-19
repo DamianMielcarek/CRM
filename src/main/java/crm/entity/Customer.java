@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity(name = "customer")
@@ -20,12 +24,16 @@ public class Customer {
     private Long id;
 
     @Column(nullable = false, unique = true)
+    @Size(min = 2)
     private String name;
 
-//    @Column(name = "email", nullable = false, unique = true)
-//    @Email(message = "Please provide a valid e-mail")
-//    @NotEmpty(message = "Please provide an e-mail")
-//    private String email;
+    @Column(name = "email", nullable = false, unique = true)
+    @Email(message = "Please provide a valid e-mail")
+    @NotEmpty(message = "Please provide an e-mail")
+    private String email;
+
+    @Digits(fraction = 0, integer = 20)
+    private int phone;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "customer_category",
