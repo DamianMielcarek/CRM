@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document generator</title>
+</head>
+<body>
+
+<h3>Enter the data to generate the document</h3>
+
+<form th:action="@{/pdf-generator}" th:object="${pdf}" method="post" id="pdfform">
+    <div>
+        <input type="hidden" th:field="*{id}" />
+    </div>
+    <div>
+        <label>
+            File name:
+            <input type="text" th:field="*{name}">
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Generate pdf"/>
+    </div>
+</form>
+<textarea form ="pdfform" name="taname" id="taid" cols="35" wrap="soft" th:field="${pdf.content}"></textarea>
+
+</body>
+</html>
