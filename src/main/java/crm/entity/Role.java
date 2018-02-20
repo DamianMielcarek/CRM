@@ -19,7 +19,7 @@ public class Role {
     @Column(name = "role_id")
     private int id;
 
-    @Column(name = "role")
+    @Column(name = "role", unique = true)
     private String name;
 
 }

@@ -13,14 +13,13 @@ import crm.entity.Customer;
 
 public interface CustomerService {
 
-
     Long getMaxId();
 
     Iterable<Customer> listAllCustomers();
 
     Customer showCustomer(Long id);
 
-    //    Iterable<Customer> findByEnabledTrue();
+//    Iterable<Customer> findByEnabledTrue();
 //
 //    Iterable<Customer> findByEnabledFalse();
 //
@@ -61,4 +60,5 @@ public interface CustomerService {
 //    void editCustomer(Customer customer);
 //
 //    void deleteCustomer(Customer customer);
+
 }
