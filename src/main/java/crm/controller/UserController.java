@@ -2,6 +2,8 @@ package crm.controller;
 
 import crm.entity.User;
 import crm.service.UserService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,42 +33,10 @@ public class UserController {
      * @return user/list
      */
     @GetMapping("/list")
-    public String showAllUsers(Model model) {
+    public String showAllUsers(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+        model.addAttribute("currentUser", userService.findByUsername(currentUser.getUsername()));
         model.addAttribute("users", userService.listAllUsers());
         return "user/list";
-    }
-
-    /**
-     * /user/add
-     * <p>
-     * Shows add user form
-     *
-     * @param model model to attributes to
-     * @return user/add
-     */
-    @GetMapping("/add")
-    public String showFormAddUser(Model model) {
-        model.addAttribute("user", new User());
-        return "user/add";
-    }
-
-    /**
-     * /user/add
-     * <p>
-     * Processes add user request
-     *
-     * @param user          variable type User
-     * @param bindingResult variable type BindingResult
-     * @return user/success
-     */
-    @PostMapping("/add")
-    public String processRequestAddUser(@Valid User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "redirect:/user/add";
-        } else {
-            userService.saveUser(user);
-            return "user/success";
-        }
     }
 
     /**
@@ -100,9 +70,23 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "redirect:/user/edit/" + id;
         } else {
-            userService.saveUser(user);
+            userService.editUser(user);
             return "redirect:/user/list";
         }
+    }
+
+    /**
+     * /user/delete/{id}
+     * <p>
+     * Deletes user
+     *
+     * @param id variable type long user id
+     * @return redirect:/user/list
+     */
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(userService.showUser(id));
+        return "redirect:/user/list";
     }
 
 }

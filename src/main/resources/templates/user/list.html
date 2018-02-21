@@ -21,6 +21,9 @@
         <td th:text="${user.username}"></td>
         <td th:text="${user.id}"></td>
         <td><a th:href="@{|/user/edit/${user.id}|}">Edit</a></td>
+        <p sec:authorize="hasRole('ROLE_ADMIN')">
+        <td><a th:unless="${currentUser.equals(user)}" th:href="@{|/user/delete/${user.id}|}">Delete</a></td>
+        </p>
     </tr>
     </tbody>
 </table>

@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Iterable<User> listAllUsers() {
-        return userRepository.findAll();
+        return userRepository.findAllByEnabled(1);
     }
 
     @Override
@@ -79,6 +79,28 @@ public class UserServiceImpl implements UserService {
                 new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+    }
+
+    @Override
+    public void editUser(User user) {
+        String password = user.getPassword();
+        user.setPassword(passwordEncoder.encode(password));
+        Role userRole = roleRepository.findOne(user.getRole().getId());
+        user.setRole(userRole);
+        user.setEnabled(1);
+        userRepository.save(user);
+        UserDetails userDetails = springDataUserDetailsService.loadUserByUsername(user.getUsername());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        user.setEnabled(0);
+        user.setPassword(null);
+        userRepository.save(user);
     }
 
 }
