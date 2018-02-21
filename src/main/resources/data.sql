@@ -9,3 +9,15 @@ VALUES ('1', 'a@u', '1', 'AFN', 'ALN', '$2a$10$iPgnenFIoM67cYL9let/iOLBphbDaEkAz
 # user - pass = user
 # manager - pass = manager
 # owner - pass = owner
+SET FOREIGN_KEY_CHECKS=0;
+INSERT INTO `crm`.`category` (`category_id`, `category`)
+VALUES ('1', 'small'), ('2', 'medium'), ('3', 'big');
+
+INSERT INTO `crm`.`customer` (`id`, `address`, `city`, `email`, `enabled`, `first_name`, `last_name`, `name`, `phone`)
+VALUES ('1', 'Small Street', 'Smallville', 'smallmail@mail.com', '1', 'SmallFN', 'SmallLN', 'Small INC', '123'),
+  ('2', 'Medium Street', 'Midtown', 'midmail@mail.com', '1', 'MidFN', 'MidLN', 'Mid INC', '456'),
+  ('3', 'Big Street', 'Big City', 'bigmail@mail.com', '1', 'BigFN', 'BigLN', 'Big INC', '789');
+
+INSERT INTO `crm`.`customer_category` (`customer_id`, `category_id`)
+VALUES (1, 1), (2, 2), (3, 3);
+SET FOREIGN_KEY_CHECKS=1;

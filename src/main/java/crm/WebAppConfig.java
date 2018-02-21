@@ -15,6 +15,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/admin").setViewName("admin/panel");
+        registry.addViewController("/search").setViewName("search");
         registry.addViewController("/403").setViewName("403");
         registry.addViewController("/logout").setViewName("logout");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);

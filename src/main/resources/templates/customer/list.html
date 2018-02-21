@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Customers</title>
@@ -10,30 +9,33 @@
 <table>
     <thead>
     <tr>
-        <th><a th:text="#{customer.name}"></a></th>
         <th><a th:text="#{customer.id}"></a></th>
+        <th><a th:text="#{customer.name}"></a></th>
+        <th><a th:text="#{customer.email}"></a></th>
+        <th><a th:text="#{customer.phone}"></a></th>
+        <th><a th:text="#{customer.first.name}"></a></th>
+        <th><a th:text="#{customer.last.name}"></a></th>
+        <th><a th:text="#{customer.address}"></a></th>
+        <th><a th:text="#{customer.city}"></a></th>
         <th></th>
         <th></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="customer : ${customers}">
-        <td th:text="${customer.name}"></td>
         <td th:text="${customer.id}"></td>
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.phone}"></td>
+        <td th:text="${customer.firstName}"></td>
+        <td th:text="${customer.lastName}"></td>
+        <td th:text="${customer.address}"></td>
+        <td th:text="${customer.city}"></td>
         <td><a th:href="@{|/customer/edit/${customer.id}|}">Edit</a></td>
         <td><a th:href="@{|/customer/addCustomerBasedOnAnotherOne/${customer.id}|}">Add new customer based on this</a></td>
     </tr>
     </tbody>
 </table>
-
-<p sec:authorize="isAuthenticated()">
-<p>Logged as: <span sec:authentication="name"></span></p>
-<p>Has role: <span sec:authentication="authorities"></span></p>
-</p>
-
-<span sec:authorize="isAuthenticated()">
-    <a th:href="@{/logout}">Log out</a>
-</span>
 
 </body>
 </html>

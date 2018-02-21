@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title>Home page</title>
@@ -7,6 +8,23 @@
 <body>
 
 <h1>Home page</h1>
+
+<p><a th:href="@{|/login|}" th:text="'Log in'"></a></p>
+<p><a th:href="@{|/register|}" th:text="'Register'"></a></p>
+<p><a th:href="@{|/user/list|}" th:text="'Show users list'"></a></p>
+<p><a th:href="@{|/pdf-generator|}" th:text="'Simple pdf generator'"></a></p>
+<p><a th:href="@{|/search|}" th:text="'Search for customers'"></a></p>
+<p><a th:href="@{|/customer/list|}" th:text="'Show customers list'"></a></p>
+<p><a th:href="@{|/customer/add|}" th:text="'Add new customer'"></a></p>
+
+<p sec:authorize="isAuthenticated()">
+<p>Logged as: <span sec:authentication="name"></span></p>
+<p>Has role: <span sec:authentication="authorities"></span></p>
+</p>
+
+<span sec:authorize="isAuthenticated()">
+    <a th:href="@{/logout}">Log out</a>
+</span>
 
 </body>
 </html>

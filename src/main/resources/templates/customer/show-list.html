@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Searching result</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th><a th:text="#{customer.id}"></a></th>
+        <th><a th:text="#{customer.address}"></a></th>
+        <th><a th:text="#{customer.city}"></a></th>
+        <th><a th:text="#{customer.email}"></a></th>
+        <th><a th:text="#{customer.first.name}"></a></th>
+        <th><a th:text="#{customer.last.name}"></a></th>
+        <th><a th:text="#{customer.name}"></a></th>
+        <th><a th:text="#{customer.phone}"></a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customers}">
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.address}"></td>
+        <td th:text="${customer.city}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.firstName}"></td>
+        <td th:text="${customer.lastName}"></td>
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.phone}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

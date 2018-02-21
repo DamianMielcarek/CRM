@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search for customer</title>
+</head>
+<body>
+
+<h2>Search customer by City and Address</h2>
+<form th:action="@{|/customer/city-address-search|}" th:object="${customer}" method="post">
+    <div>
+        <label>
+            City:
+            <input type="text" th:field="*{city}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Address:
+            <input type="text" th:field="*{address}"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Search Customer"/>
+    </div>
+</form>
+
+</body>
+</html>

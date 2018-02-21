@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Choose searching type</title>
+</head>
+<body>
+
+<h2>Choose searching type</h2>
+
+<p><a th:href="@{|/customer/name-search|}" th:text="'Search for customers by Name'"></a></p>
+<p><a th:href="@{|/customer/email-search|}" th:text="'Search for customers by Email'"></a></p>
+<p><a th:href="@{|/customer/phone-search|}" th:text="'Search for customers by Phone'"></a></p>
+<p><a th:href="@{|/customer/first-name-search|}" th:text="'Search for customers by First Name'"></a></p>
+<p><a th:href="@{|/customer/last-name-search|}" th:text="'Search for customers by Last Name'"></a></p>
+<p><a th:href="@{|/customer/first-name-last-name-search|}" th:text="'Search for customers by First Name and Last Name'"></a></p>
+<p><a th:href="@{|/customer/city-search|}" th:text="'Search for customers by City'"></a></p>
+<p><a th:href="@{|/customer/city-address-search|}" th:text="'Search for customers by City and Address'"></a></p>
+
+</body>
+</html>

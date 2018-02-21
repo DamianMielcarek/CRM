@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search for customer</title>
+</head>
+<body>
+
+<h2>Search customer by Last Name</h2>
+<form th:action="@{|/customer/last-name-search|}" th:object="${customer}" method="post">
+    <div>
+        <label>
+            Last Name:
+            <input type="text" th:field="*{lastName}"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Search Customer"/>
+    </div>
+</form>
+
+</body>
+</html>
