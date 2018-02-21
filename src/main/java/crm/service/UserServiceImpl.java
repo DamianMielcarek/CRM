@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -54,8 +52,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
+    public Iterable<User> listAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User showUser(Long id) {
+        return userRepository.findOne(id);
     }
 
     @Override
@@ -66,7 +69,11 @@ public class UserServiceImpl implements UserService {
         String password = user.getPassword();
         user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
-
+        if (user.getId().equals(1L)) {
+            userRole = roleRepository.findByName("ROLE_ADMIN");
+            user.setRole(userRole);
+            userRepository.save(user);
+        }
         UserDetails userDetails = springDataUserDetailsService.loadUserByUsername(user.getUsername());
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                 new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());

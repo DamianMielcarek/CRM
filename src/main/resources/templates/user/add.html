@@ -2,9 +2,52 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Add user</title>
 </head>
 <body>
+
+<h2>Add user form</h2>
+<form th:action="@{|/user/add|}" th:object="${user}" method="post">
+    <div>
+        <label>
+            Username:
+            <input type="text" th:field="*{username}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            E-mail:
+            <input type="email" th:field="*{email}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            First Name:
+            <input type="text" th:field="*{firstName}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Last Name:
+            <input type="text" th:field="*{lastName}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Password:
+            <input type="password" th:field="*{password}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Role:
+            <input type="text" th:field="*{role.name}"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Add User"/>
+    </div>
+</form>
 
 </body>
 </html>

@@ -2,13 +2,13 @@ package crm.service;
 
 import crm.entity.User;
 
-import java.util.List;
-
 public interface UserService {
 
     User findByUsername(String username);
 
-    List<User> findAll();
+    Iterable<User> listAllUsers();
+
+    User showUser(Long id);
 
     void saveUser(User user);
 

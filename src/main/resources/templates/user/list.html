@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th><a th:text="#{user.username}"></a></th>
+        <th><a th:text="#{user.id}"></a></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.id}"></td>
+        <td><a th:href="@{|/user/edit/${user.id}|}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<p sec:authorize="isAuthenticated()">
+<p>Logged as: <span sec:authentication="name"></span></p>
+<p>Has role: <span sec:authentication="authorities"></span></p>
+</p>
+
+<span sec:authorize="isAuthenticated()">
+    <a th:href="@{/logout}">Log out</a>
+</span>
+
+</body>
+</html>
