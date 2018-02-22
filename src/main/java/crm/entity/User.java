@@ -39,4 +39,16 @@ public class User {
     @ManyToOne
     private Role role;
 
+    public int getColumnCount() {
+        return getClass().getDeclaredFields().length;
+    }
+
+    public int getRole_id() {
+        return role.getId();
+    }
+
+    public String getRole_name() {
+        return role.getName();
+    }
+
 }

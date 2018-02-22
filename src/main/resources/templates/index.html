@@ -16,6 +16,10 @@
 <p><a th:href="@{|/search|}" th:text="'Search for customers'"></a></p>
 <p><a th:href="@{|/customer/list|}" th:text="'Show customers list'"></a></p>
 <p><a th:href="@{|/customer/add|}" th:text="'Add new customer'"></a></p>
+<!--<p><a th:href="@{|/import|}" th:text="'Import CSV file'"></a></p>-->
+<p><a th:href="@{|/download.pdf|}" th:text="'Download users list in PDF file'"></a></p>
+<p><a th:href="@{|/download.xls|}" th:text="'Download users list in XLS file'"></a></p>
+<p><a th:href="@{|/download.csv|}" th:text="'Download users list in CSV file'"></a></p>
 
 <p sec:authorize="isAuthenticated()">
 <p>Logged as: <span sec:authentication="name"></span></p>
