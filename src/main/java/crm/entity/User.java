@@ -51,4 +51,8 @@ public class User {
         return role.getName();
     }
 
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
 }

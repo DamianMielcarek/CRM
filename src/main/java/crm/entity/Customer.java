@@ -12,7 +12,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
-@Entity(name = "customer")
+@Entity
 @Data
 @Builder
 @NoArgsConstructor

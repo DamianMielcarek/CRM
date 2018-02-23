@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add contract</title>
+</head>
+<body>
+
+<h2>Add contract form</h2>
+<form th:action="@{|/contract/add|}" th:object="${contract}" method="post">
+    <div>
+        <label>
+            Name:
+            <input type="text" th:field="*{name}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Content:
+            <input type="text" th:field="*{content}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Value:
+            <input type="text" th:field="*{value}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Begin Date:
+            <input type="date" th:field="*{beginDate}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            End date:
+            <input type="date" th:field="*{endDate}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Status:
+            <input type="text" th:field="*{status}"/>
+            PROPOSED, NEGOTIATED, IMPLEMENTED, DONE;
+        </label>
+    </div>
+    <!--<div>-->
+        <!--<label th:text="|#{crm.status}:|">Status:-->
+            <!--<select th:field="*{status}">-->
+                <!--<option th:each="status : ${T(crm.entity.Status).ALL}"-->
+                        <!--th:value="${status}"-->
+                        <!--th:text="#{${'crm.status.'+status}}">-->
+                <!--</option>-->
+            <!--</select>-->
+        <!--</label>-->
+    <!--</div>-->
+    <div>
+        <label>
+            Customer id:
+            <input type="number" th:field="*{customer.id}"/>
+        </label>
+        <!--<label th:text="|#{crm.customer.id}:|">Customer id:-->
+            <!--<select th:field="*{customer.id}">-->
+                <!--<option th:each="id : ${T(crm.entity.Customer).id}"-->
+                        <!--th:value="${id}"-->
+                        <!--th:text="${id}">-->
+                <!--</option>-->
+            <!--</select>-->
+        <!--</label>-->
+    </div>
+    <div>
+        <label>
+            User id:
+            <input type="number" th:field="*{user.id}"/>
+        </label>
+        <!--<label th:text="|#{crm.user.id}:|">User id:-->
+            <!--<select th:field="*{user.id}">-->
+                <!--<option th:each="id : ${T(crm.entity.User).id}"-->
+                        <!--th:value="${id}"-->
+                        <!--th:text="${id}">-->
+                <!--</option>-->
+            <!--</select>-->
+        <!--</label>-->
+    </div>
+    <div>
+        <input type="submit" value="Add Contract"/>
+    </div>
+</form>
+
+</body>
+</html>

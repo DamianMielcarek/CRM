@@ -20,6 +20,8 @@
 <p><a th:href="@{|/download.pdf|}" th:text="'Download users list in PDF file'"></a></p>
 <p><a th:href="@{|/download.xls|}" th:text="'Download users list in XLS file'"></a></p>
 <p><a th:href="@{|/download.csv|}" th:text="'Download users list in CSV file'"></a></p>
+<p><a th:href="@{|/contract/list|}" th:text="'Show contracts list'"></a></p>
+<p><a th:href="@{|/contract/add|}" th:text="'Add new contract'"></a></p>
 
 <p sec:authorize="isAuthenticated()">
 <p>Logged as: <span sec:authentication="name"></span></p>

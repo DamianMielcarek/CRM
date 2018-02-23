@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Contracts</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th><a th:text="#{contract.id}"></a></th>
+        <th><a th:text="#{contract.name}"></a></th>
+        <th><a th:text="#{contract.content}"></a></th>
+        <th><a th:text="#{contract.value}"></a></th>
+        <th><a th:text="#{contract.begin.date}"></a></th>
+        <th><a th:text="#{contract.end.date}"></a></th>
+        <th><a th:text="#{contract.status}"></a></th>
+        <th><a th:text="#{crm.customer.id}"></a></th>
+        <th><a th:text="#{crm.user.id}"></a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contract : ${contracts}">
+        <td th:text="${contract.id}"></td>
+        <td th:text="${contract.name}"></td>
+        <td th:text="${contract.content}"></td>
+        <td th:text="${contract.value}"></td>
+        <td th:text="${contract.beginDate}"></td>
+        <td th:text="${contract.endDate}"></td>
+        <td th:text="${contract.status}"></td>
+        <td th:text="${contract.customer.name}"></td>
+        <td th:text="${contract.user.name}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
