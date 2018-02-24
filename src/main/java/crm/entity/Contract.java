@@ -28,14 +28,10 @@ public class Contract {
 
     private BigDecimal value;
 
-//    @JsonFormat(pattern="yyyy-MM-dd")
-//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate beginDate;
 
-//    @JsonFormat(pattern="yyyy-MM-dd")
-//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)

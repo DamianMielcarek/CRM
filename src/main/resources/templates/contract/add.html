@@ -23,40 +23,31 @@
     <div>
         <label>
             Value:
-            <input type="text" th:field="*{value}"/>
+            <input type="text" th:field="*{value}" placeholder="1000"/>
         </label>
     </div>
     <div>
         <label>
             Begin Date:
-            <input type="text" th:field="*{beginDate}"/>dd.MM.yyyy
-            <!--<input type="date" th:field="*{beginDate}"/>--><!--with attribute type="date" does not work-->
+            <input type="date" th:field="*{beginDate}"/>
         </label>
     </div>
     <div>
         <label>
             End date:
-            <input type="text" th:field="*{endDate}"/>dd.MM.yyyy
-            <!--<input type="date" th:field="*{endDate}"/>--><!--with attribute type="date" does not work-->
+            <input type="date" th:field="*{endDate}"/>
         </label>
     </div>
     <div>
         <label>
             Status:
-            <input type="text" th:field="*{status}"/>
-            PROPOSED, NEGOTIATED, IMPLEMENTED, DONE;
+            <select th:field="*{status}">
+                <option th:each="status : ${T(crm.entity.Status).ALL}"
+                        th:value="${status}" th:text="${status}">
+                </option>
+            </select>
         </label>
     </div>
-    <!--<div>-->
-        <!--<label th:text="|#{crm.status}:|">Status:-->
-            <!--<select th:field="*{status}">-->
-                <!--<option th:each="status : ${T(crm.entity.Status).ALL}"-->
-                        <!--th:value="${status}"-->
-                        <!--th:text="#{${'crm.status.'+status}}">-->
-                <!--</option>-->
-            <!--</select>-->
-        <!--</label>-->
-    <!--</div>-->
     <div>
         <label>
             Customer id:
