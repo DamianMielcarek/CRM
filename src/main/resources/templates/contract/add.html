@@ -29,13 +29,15 @@
     <div>
         <label>
             Begin Date:
-            <input type="date" th:field="*{beginDate}"/>
+            <input type="text" th:field="*{beginDate}"/>dd.MM.yyyy
+            <!--<input type="date" th:field="*{beginDate}"/>--><!--with attribute type="date" does not work-->
         </label>
     </div>
     <div>
         <label>
             End date:
-            <input type="date" th:field="*{endDate}"/>
+            <input type="text" th:field="*{endDate}"/>dd.MM.yyyy
+            <!--<input type="date" th:field="*{endDate}"/>--><!--with attribute type="date" does not work-->
         </label>
     </div>
     <div>

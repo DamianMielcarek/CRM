@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -27,8 +28,14 @@ public class Contract {
 
     private BigDecimal value;
 
+//    @JsonFormat(pattern="yyyy-MM-dd")
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate beginDate;
 
+//    @JsonFormat(pattern="yyyy-MM-dd")
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)

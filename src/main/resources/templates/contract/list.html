@@ -16,8 +16,8 @@
         <th><a th:text="#{contract.begin.date}"></a></th>
         <th><a th:text="#{contract.end.date}"></a></th>
         <th><a th:text="#{contract.status}"></a></th>
-        <th><a th:text="#{crm.customer.id}"></a></th>
-        <th><a th:text="#{crm.user.id}"></a></th>
+        <th><a th:text="#{crm.customer.name}"></a></th>
+        <th><a th:text="#{user.name}"></a></th>
     </tr>
     </thead>
     <tbody>
@@ -26,8 +26,8 @@
         <td th:text="${contract.name}"></td>
         <td th:text="${contract.content}"></td>
         <td th:text="${contract.value}"></td>
-        <td th:text="${contract.beginDate}"></td>
-        <td th:text="${contract.endDate}"></td>
+        <td th:text="${#temporals.format(contract.beginDate, 'dd.MM.yyyy')}"></td>
+        <td th:text="${#temporals.format(contract.endDate, 'dd.MM.yyyy')}"></td>
         <td th:text="${contract.status}"></td>
         <td th:text="${contract.customer.name}"></td>
         <td th:text="${contract.user.name}"></td>
