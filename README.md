@@ -4,7 +4,7 @@ Customer relationship management system.
 
 Technologies used in this project:
   - Spring framework (Spring Boot)
-  - MySql database
+  - MySQL database
   - Spring MVC
   - Spring Data
   - Spring Security
