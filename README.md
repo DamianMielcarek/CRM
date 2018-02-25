@@ -1,4 +1,4 @@
-# crm
+# CRM
 
 Customer relationship management system.
 
