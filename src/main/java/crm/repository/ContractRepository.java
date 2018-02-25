@@ -25,15 +25,11 @@ public interface ContractRepository extends JpaRepository<Contract, Long> {
 
     Iterable<Contract> findAllByBeginDateAfter(LocalDate afterBeginDate);
 
-    Iterable<Contract> findAllByBeginDateBetween(LocalDate date1, LocalDate date2);
-
     Iterable<Contract> findAllByEndDate(LocalDate endDate);
 
     Iterable<Contract> findAllByEndDateBefore(LocalDate beforeEndDate);
 
     Iterable<Contract> findAllByEndDateAfter(LocalDate afterEndDate);
-
-    Iterable<Contract> findAllByEndDateBetween(LocalDate date1, LocalDate date2);
 
     Iterable<Contract> findAllByStatus(Status status);
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search contract by end date before</title>
+</head>
+<body>
+
+<h2>Search contract by end date before</h2>
+<form th:action="@{|/contract/end-date-before-search|}" th:object="${contract}" method="post">
+    <div>
+        <label>
+            End Date:
+            <input type="date" th:field="*{endDate}"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Search Contract"/>
+    </div>
+</form>
+
+</body>
+</html>

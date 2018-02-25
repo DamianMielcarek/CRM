@@ -10,23 +10,38 @@
 <table>
     <thead>
     <tr>
+        <th><a th:text="#{ordinal.number}"></a></th>
         <th><a th:text="#{user.username}"></a></th>
-        <th><a th:text="#{user.id}"></a></th>
+        <th><a th:text="#{user.email}"></a></th>
+        <th><a th:text="#{user.first.name}"></a></th>
+        <th><a th:text="#{user.last.name}"></a></th>
         <th></th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="user : ${users}">
+    <tr th:each="user, iterStat : ${users}">
+        <td th:text="${iterStat.count}"></td>
         <td th:text="${user.username}"></td>
-        <td th:text="${user.id}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <p sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_MANAGER')">
+        <td><a th:if="${currentUser.equals(user)}" th:href="@{|/user/edit/${user.id}|}">Edit</a></td>
+        </p>
+        <p sec:authorize="hasAnyRole('ROLE_OWNER', 'ROLE_ADMIN')">
         <td><a th:href="@{|/user/edit/${user.id}|}">Edit</a></td>
+        </p>
         <p sec:authorize="hasRole('ROLE_ADMIN')">
         <td><a th:unless="${currentUser.equals(user)}" th:href="@{|/user/delete/${user.id}|}">Delete</a></td>
         </p>
     </tr>
     </tbody>
 </table>
+
+<p><a th:href="@{|/download.pdf|}" th:text="'Download users list in PDF file'"></a></p>
+<p><a th:href="@{|/download.xls|}" th:text="'Download users list in XLS file'"></a></p>
+<p><a th:href="@{|/download.csv|}" th:text="'Download users list in CSV file'"></a></p>
 
 <p sec:authorize="isAuthenticated()">
 <p>Logged as: <span sec:authentication="name"></span></p>

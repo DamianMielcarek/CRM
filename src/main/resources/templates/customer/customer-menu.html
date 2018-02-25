@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Customers management</title>
+</head>
+<body>
+
+<h2>Customers management</h2>
+
+<p><a th:href="@{|/search|}" th:text="'Search for customers'"></a></p>
+<p><a th:href="@{|/customer/list|}" th:text="'Show customers list'"></a></p>
+<p><a th:href="@{|/customer/add|}" th:text="'Add new customer'"></a></p>
+
+</body>
+</html>

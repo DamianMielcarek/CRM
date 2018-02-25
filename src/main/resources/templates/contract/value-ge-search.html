@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search contract by value greater equal than</title>
+</head>
+<body>
+
+<h2>Search contract by value greater equal than</h2>
+<form th:action="@{|/contract/value-ge-search|}" th:object="${contract}" method="post">
+    <div>
+        <label>
+            Value:
+            <input type="text" th:field="*{value}"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Search Contract"/>
+    </div>
+</form>
+
+</body>
+</html>

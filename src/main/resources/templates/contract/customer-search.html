@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search contract by customer</title>
+</head>
+<body>
+
+<h2>Search contract by customer</h2>
+<form th:action="@{|/contract/customer-search|}" th:object="${contract}" method="post">
+    <div>
+        <label>
+            Customer:
+            <select th:field="*{customer}">
+                <option th:each="customer : ${customers}"
+                        th:value="${customer}" th:text="${customer}">
+                </option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Search Contract"/>
+    </div>
+</form>
+
+</body>
+</html>

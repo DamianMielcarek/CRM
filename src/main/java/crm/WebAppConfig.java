@@ -36,6 +36,9 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/").setViewName("index");
+        registry.addViewController("/user/menu").setViewName("user/user-menu");
+        registry.addViewController("/customer/menu").setViewName("customer/customer-menu");
+        registry.addViewController("/contract/menu").setViewName("contract/contract-menu");
         registry.addViewController("/admin").setViewName("admin/panel");
         registry.addViewController("/search").setViewName("search");
         registry.addViewController("/403").setViewName("403");

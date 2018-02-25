@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit contract</title>
+</head>
+<body>
+
+<h2>Edit contract form</h2>
+<form th:action="@{|/contract/edit/${contract.id}|}" th:object="${contract}" method="post">
+    <div>
+        <label>
+            Name:
+            <input type="text" th:field="*{name}" th:value="*{name}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Content:
+            <input type="text" th:field="*{content}" th:value="*{content}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Value:
+            <input type="text" th:field="*{value}" th:value="*{value}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Begin Date:
+            <input type="date" th:field="*{beginDate}" th:value="*{beginDate}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            End date:
+            <input type="date" th:field="*{endDate}" th:value="*{endDate}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Status:
+            <select th:field="*{status}">
+                <option th:each="status : ${T(crm.entity.Status).ALL}"
+                        th:value="${status}" th:text="${status}">
+                </option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label>
+            Customer id:
+            <input type="number" th:field="*{customer.id}" th:value="*{customer.id}"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            User id:
+            <input type="number" th:field="*{user.id}" th:value="*{user.id}"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Edit Contract"/>
+    </div>
+</form>
+
+</body>
+</html>

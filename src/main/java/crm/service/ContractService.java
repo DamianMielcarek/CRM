@@ -14,6 +14,8 @@ public interface ContractService {
 
     Iterable<Contract> listAllContracts();
 
+    Contract showContract(Long id);
+
     Iterable<Contract> findAllByValueLessThanEqual(BigDecimal value);
 
     Iterable<Contract> findAllByValueGreaterThanEqual(BigDecimal value);
@@ -24,15 +26,11 @@ public interface ContractService {
 
     Iterable<Contract> findAllByBeginDateAfter(LocalDate afterBeginDate);
 
-    Iterable<Contract> findAllByBeginDateBetween(LocalDate date1, LocalDate date2);
-
     Iterable<Contract> findAllByEndDate(LocalDate endDate);
 
     Iterable<Contract> findAllByEndDateBefore(LocalDate beforeEndDate);
 
     Iterable<Contract> findAllByEndDateAfter(LocalDate afterEndDate);
-
-    Iterable<Contract> findAllByEndDateBetween(LocalDate date1, LocalDate date2);
 
     Iterable<Contract> findAllByStatus(Status status);
 

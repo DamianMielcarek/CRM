@@ -9,28 +9,32 @@
 
 <h1>Home page</h1>
 
-<p><a th:href="@{|/login|}" th:text="'Log in'"></a></p>
-<p><a th:href="@{|/register|}" th:text="'Register'"></a></p>
-<p><a th:href="@{|/user/list|}" th:text="'Show users list'"></a></p>
-<p><a th:href="@{|/pdf-generator|}" th:text="'Simple pdf generator'"></a></p>
-<p><a th:href="@{|/search|}" th:text="'Search for customers'"></a></p>
-<p><a th:href="@{|/customer/list|}" th:text="'Show customers list'"></a></p>
-<p><a th:href="@{|/customer/add|}" th:text="'Add new customer'"></a></p>
-<!--<p><a th:href="@{|/import|}" th:text="'Import CSV file'"></a></p>-->
-<p><a th:href="@{|/download.pdf|}" th:text="'Download users list in PDF file'"></a></p>
-<p><a th:href="@{|/download.xls|}" th:text="'Download users list in XLS file'"></a></p>
-<p><a th:href="@{|/download.csv|}" th:text="'Download users list in CSV file'"></a></p>
-<p><a th:href="@{|/contract/list|}" th:text="'Show contracts list'"></a></p>
-<p><a th:href="@{|/contract/add|}" th:text="'Add new contract'"></a></p>
+<a sec:authorize="hasRole('ROLE_ANONYMOUS')">
+    <p>Login = user, Password = user</p>
+    <p>Login = manager, Password = manager</p>
+    <p>Login = owner, Password = owner</p>
+    <p>Login = admin, Password = admin</p>
+    <p>User has some restrictions. Only manager and owner can edit contracts. Only admin can delete users.</p>
+    <p><a th:href="@{|/login|}" th:text="'Log in'"></a></p>
+    <p><a th:href="@{|/register|}" th:text="'Register'"></a></p>
+</a>
+<a sec:authorize="isAuthenticated()">
+    <p><a th:href="@{|/user/menu|}" th:text="'User menu'"></a></p>
 
-<p sec:authorize="isAuthenticated()">
-<p>Logged as: <span sec:authentication="name"></span></p>
-<p>Has role: <span sec:authentication="authorities"></span></p>
-</p>
+    <p><a th:href="@{|/customer/menu|}" th:text="'Customer menu'"></a></p>
 
-<span sec:authorize="isAuthenticated()">
+    <p><a th:href="@{|/contract/menu|}" th:text="'Contract menu'"></a></p>
+
+    <p><a th:href="@{|/pdf-generator|}" th:text="'Simple pdf generator'"></a></p>
+
+    <!--<p><a th:href="@{|/import|}" th:text="'Import CSV file'"></a></p>-->
+
+
+    <p>Logged as: <span sec:authentication="name"></span></p>
+    <p>Has role: <span sec:authentication="authorities"></span></p>
+
     <a th:href="@{/logout}">Log out</a>
-</span>
+</a>
 
 </body>
 </html>

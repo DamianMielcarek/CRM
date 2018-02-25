@@ -36,6 +36,11 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    public Contract showContract(Long id) {
+        return contractRepository.findOne(id);
+    }
+
+    @Override
     public Iterable<Contract> findAllByValueLessThanEqual(BigDecimal value) {
         return contractRepository.findAllByValueLessThanEqual(value);
     }
@@ -61,11 +66,6 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Iterable<Contract> findAllByBeginDateBetween(LocalDate date1, LocalDate date2) {
-        return contractRepository.findAllByBeginDateBetween(date1, date2);
-    }
-
-    @Override
     public Iterable<Contract> findAllByEndDate(LocalDate endDate) {
         return contractRepository.findAllByEndDate(endDate);
     }
@@ -78,11 +78,6 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public Iterable<Contract> findAllByEndDateAfter(LocalDate afterEndDate) {
         return contractRepository.findAllByEndDateAfter(afterEndDate);
-    }
-
-    @Override
-    public Iterable<Contract> findAllByEndDateBetween(LocalDate date1, LocalDate date2) {
-        return contractRepository.findAllByEndDateBetween(date1, date2);
     }
 
     @Override
