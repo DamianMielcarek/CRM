@@ -17,6 +17,7 @@ Functionalities:
   - custom searches based on various parameters
 3. Creating roles and access rights
   - structure of rights: user, manager, owner, admin
+  - based on access rights chosen elements of application are shown
   - special admin's section to edit access rights
   - used spring security to achieve this
 4. Contracts generation
