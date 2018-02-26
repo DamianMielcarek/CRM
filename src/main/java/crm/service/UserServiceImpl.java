@@ -85,15 +85,16 @@ public class UserServiceImpl implements UserService {
     public void editUser(User user) {
         String password = user.getPassword();
         user.setPassword(passwordEncoder.encode(password));
-        Role userRole = roleRepository.findOne(user.getRole().getId());
-        user.setRole(userRole);
-        user.setEnabled(1);
-        userRepository.save(user);
-        UserDetails userDetails = springDataUserDetailsService.loadUserByUsername(user.getUsername());
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
-        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        try {
+            userRole = roleRepository.findOne(user.getRole().getId());
+        } catch (NullPointerException e) {
+            userRole = roleRepository.findByName("ROLE_USER");
+        } finally {
+            user.setRole(userRole);
+            user.setEnabled(1);
+            userRepository.save(user);
+        }
     }
 
     @Override

@@ -1,19 +1,22 @@
 package crm.controller;
 
-//@RestController
-//public class MyErrorController implements ErrorController {
-public class MyErrorController {
+import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-//    private static final String PATH = "/error";
-//
-//    @RequestMapping(value = PATH)
-//    public String error() {
-//        return "Error handling";
-//    }
-//
-//    @Override
-//    public String getErrorPath() {
-//        return PATH;
-//    }
+@RestController
+public class MyErrorController implements ErrorController {
+
+    private static final String PATH = "/error";
+
+    @RequestMapping(value = PATH)
+    public String error() {
+        return "Error handling";
+    }
+
+    @Override
+    public String getErrorPath() {
+        return PATH;
+    }
 
 }

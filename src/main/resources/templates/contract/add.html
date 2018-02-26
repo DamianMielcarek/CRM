@@ -50,31 +50,23 @@
     </div>
     <div>
         <label>
-            Customer id:
-            <input type="number" th:field="*{customer.id}"/>
+            Customer:
+            <select th:field="*{customer.id}">
+                <option th:each="customer : ${customers}"
+                        th:value="${customer.id}" th:text="${customer}">
+                </option>
+            </select>
         </label>
-        <!--<label th:text="|#{crm.customer.id}:|">Customer id:-->
-            <!--<select th:field="*{customer.id}">-->
-                <!--<option th:each="id : ${T(crm.entity.Customer).id}"-->
-                        <!--th:value="${id}"-->
-                        <!--th:text="${id}">-->
-                <!--</option>-->
-            <!--</select>-->
-        <!--</label>-->
     </div>
     <div>
         <label>
-            User id:
-            <input type="number" th:field="*{user.id}"/>
+            User:
+            <select th:field="*{user.id}">
+                <option th:each="user : ${users}"
+                        th:value="${user.id}" th:text="${user}">
+                </option>
+            </select>
         </label>
-        <!--<label th:text="|#{crm.user.id}:|">User id:-->
-            <!--<select th:field="*{user.id}">-->
-                <!--<option th:each="id : ${T(crm.entity.User).id}"-->
-                        <!--th:value="${id}"-->
-                        <!--th:text="${id}">-->
-                <!--</option>-->
-            <!--</select>-->
-        <!--</label>-->
     </div>
     <div>
         <input type="submit" value="Add Contract"/>

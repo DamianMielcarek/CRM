@@ -2,8 +2,10 @@ package crm.controller;
 
 import crm.entity.Contract;
 import crm.entity.Customer;
+import crm.entity.User;
 import crm.service.ContractService;
 import crm.service.CustomerService;
+import crm.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,9 +21,12 @@ public class ContractController {
 
     private CustomerService customerService;
 
-    public ContractController(ContractService contractService, CustomerService customerService) {
+    private UserService userService;
+
+    public ContractController(ContractService contractService, CustomerService customerService, UserService userService) {
         this.contractService = contractService;
         this.customerService = customerService;
+        this.userService = userService;
     }
 
     /**
@@ -48,7 +53,11 @@ public class ContractController {
      */
     @GetMapping("/add")
     public String showFormAddContract(Model model) {
+        Iterable<Customer> customers = customerService.findAllByEnabledTrue();
+        Iterable<User> users = userService.listAllUsers();
         model.addAttribute("contract", new Contract());
+        model.addAttribute("customers", customers);
+        model.addAttribute("users", users);
         return "contract/add";
     }
 
@@ -397,8 +406,6 @@ public class ContractController {
         return "contract/show-list";
     }
 
-//    Iterable<Contract> findAllByCustomer(Customer customer);
-
     /**
      * /contract/customer-search
      * <p>
@@ -430,8 +437,68 @@ public class ContractController {
         return "contract/show-list";
     }
 
+    /**
+     * /contract/customer-user-search
+     * <p>
+     * Shows form to search contract by customer and user
+     *
+     * @param model model to add attributes to
+     * @return contract/customer-user-search
+     */
+    @GetMapping("/customer-user-search")
+    public String showCustomerUserSearchForm(Model model) {
+        Iterable<Customer> customers = customerService.findAllByEnabledTrue();
+        Iterable<User> users = userService.listAllUsers();
+        model.addAttribute("contract", new Contract());
+        model.addAttribute("customers", customers);
+        model.addAttribute("users", users);
+        return "contract/customer-user-search";
+    }
 
-//    Iterable<Contract> findAllByCustomerAndUser(Customer customer, User user);
-//    Iterable<Contract> findAllByUser(User user);
+    /**
+     * /contract/customer-user-search
+     * <p>
+     * Processes request searching by customer and user
+     *
+     * @param contract variable type Contract
+     * @param model    model to add attributes to
+     * @return contract/show-list
+     */
+    @PostMapping("/customer-user-search")
+    public String processRequestCustomerUserSearch(@ModelAttribute Contract contract, Model model) {
+        model.addAttribute("contracts", contractService.findAllByCustomerAndUser(contract.getCustomer(), contract.getUser()));
+        return "contract/show-list";
+    }
+
+    /**
+     * /contract/user-search
+     * <p>
+     * Shows form to search contract by user
+     *
+     * @param model model to add attributes to
+     * @return contract/user-search
+     */
+    @GetMapping("/user-search")
+    public String showUserSearchForm(Model model) {
+        Iterable<User> users = userService.listAllUsers();
+        model.addAttribute("contract", new Contract());
+        model.addAttribute("users", users);
+        return "contract/user-search";
+    }
+
+    /**
+     * /contract/user-search
+     * <p>
+     * Processes request searching by user
+     *
+     * @param contract variable type Contract
+     * @param model    model to add attributes to
+     * @return contract/show-list
+     */
+    @PostMapping("/user-search")
+    public String processRequestUserSearch(@ModelAttribute Contract contract, Model model) {
+        model.addAttribute("contracts", contractService.findAllByUser(contract.getUser()));
+        return "contract/show-list";
+    }
 
 }

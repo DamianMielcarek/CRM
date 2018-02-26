@@ -26,8 +26,8 @@
         <td th:text="${contract.name}"></td>
         <td th:text="${contract.content}"></td>
         <td th:text="${contract.value}"></td>
-        <td th:text="${contract.beginDate}"></td>
-        <td th:text="${contract.endDate}"></td>
+        <td th:text="${#temporals.format(contract.beginDate, 'dd.MM.yyyy')}"></td>
+        <td th:text="${#temporals.format(contract.endDate, 'dd.MM.yyyy')}"></td>
         <td th:text="${contract.status}"></td>
         <td th:text="${contract.customer.name}"></td>
         <td th:text="${contract.user.name}"></td>

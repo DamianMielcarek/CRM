@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Choose searching type</title>
+</head>
+<body>
+
+<h2>Choose searching type</h2>
+
+<p><a th:href="@{|/contract/name-search|}" th:text="'Search for contract by Name'"></a></p>
+<p><a th:href="@{|/contract/value-le-search|}" th:text="'Search for contracts by Value Less Than Equal'"></a></p>
+<p><a th:href="@{|/contract/value-ge-search|}" th:text="'Search for contracts by Value Greater Than Equal'"></a></p>
+<p><a th:href="@{|/contract/begin-date-search|}" th:text="'Search for contracts by Begin Date'"></a></p>
+<p><a th:href="@{|/contract/begin-date-before-search|}" th:text="'Search for contracts by Begin Date Before'"></a></p>
+<p><a th:href="@{|/contract/begin-date-after-search|}" th:text="'Search for contracts by Begin Date After'"></a></p>
+<p><a th:href="@{|/contract/end-date-search|}" th:text="'Search for contracts by End Date'"></a></p>
+<p><a th:href="@{|/contract/end-date-before-search|}" th:text="'Search for contracts by End Date Before'"></a></p>
+<p><a th:href="@{|/contract/end-date-after-search|}" th:text="'Search for contracts by End Date After'"></a></p>
+<p><a th:href="@{|/contract/status-search|}" th:text="'Search for contracts by Status'"></a></p>
+<p><a th:href="@{|/contract/customer-search|}" th:text="'Search for contracts by Customer'"></a></p>
+<p><a th:href="@{|/contract/customer-user-search|}" th:text="'Search for contracts by Customer and User'"></a></p>
+<p><a th:href="@{|/contract/user-search|}" th:text="'Search for contracts by User'"></a></p>
+
+</body>
+</html>

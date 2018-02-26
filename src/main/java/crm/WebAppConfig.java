@@ -39,6 +39,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/user/menu").setViewName("user/user-menu");
         registry.addViewController("/customer/menu").setViewName("customer/customer-menu");
         registry.addViewController("/contract/menu").setViewName("contract/contract-menu");
+        registry.addViewController("/contract/search").setViewName("contract/search");
         registry.addViewController("/admin").setViewName("admin/panel");
         registry.addViewController("/search").setViewName("search");
         registry.addViewController("/403").setViewName("403");

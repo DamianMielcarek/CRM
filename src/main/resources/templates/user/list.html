@@ -15,6 +15,8 @@
         <th><a th:text="#{user.email}"></a></th>
         <th><a th:text="#{user.first.name}"></a></th>
         <th><a th:text="#{user.last.name}"></a></th>
+        <th><a th:text="#{role.id}"></a></th>
+        <th><a th:text="#{role.name}"></a></th>
         <th></th>
         <th></th>
     </tr>
@@ -26,6 +28,8 @@
         <td th:text="${user.email}"></td>
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
+        <td th:text="${user.role.id}"></td>
+        <td th:text="${user.role.name}"></td>
         <p sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_MANAGER')">
         <td><a th:if="${currentUser.equals(user)}" th:href="@{|/user/edit/${user.id}|}">Edit</a></td>
         </p>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Edit user</title>
@@ -38,12 +39,14 @@
             <input type="password" th:field="*{password}" th:value="*{password}"/>
         </label>
     </div>
+    <p sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_OWNER', 'ROLE_ADMIN')">
     <div>
         <label>
             Role:
             <input type="text" th:field="*{role.id}" th:value="*{role.id}"/>
         </label>
     </div>
+    </p>
     <div>
         <input type="submit" value="Edit User"/>
     </div>
